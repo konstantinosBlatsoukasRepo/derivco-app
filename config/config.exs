@@ -10,12 +10,29 @@ use Mix.Config
 config :derivco_app,
   ecto_repos: [DerivcoApp.Repo]
 
-# Configures the endpoint
+config :derivco_app, DerivcoApp.Repo,
+  username: System.get_env("DATABASE_USER"),
+  password: System.get_env("DATABASE_PASS"),
+  database: System.get_env("DATABASE_NAME"),
+  hostname: System.get_env("DATABASE_HOST"),
+  pool_size: 15
+
+port = String.to_integer(System.get_env("PORT") || "8080")
+
 config :derivco_app, DerivcoAppWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "xVLDagoqKf+oWEwVOj1xvxpfreFHJ/28+dFQhuDbZzrUSd0Dgpda3fMgIVumvrox",
+  http: [port: port],
+  url: [host: System.get_env("HOSTNAME"), port: port],
+  root: ".",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: DerivcoAppWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: DerivcoApp.PubSub, adapter: Phoenix.PubSub.PG2]
+
+# Configures the endpoint
+# config :derivco_app, DerivcoAppWeb.Endpoint,
+#   url: [host: "localhost"],
+#   secret_key_base: "xVLDagoqKf+oWEwVOj1xvxpfreFHJ/28+dFQhuDbZzrUSd0Dgpda3fMgIVumvrox",
+#   render_errors: [view: DerivcoAppWeb.ErrorView, accepts: ~w(html json)],
+#   pubsub: [name: DerivcoApp.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -9,7 +9,7 @@ defmodule DerivcoApp.Application do
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
-      DerivcoApp.Repo,
+      # DerivcoApp.Repo,
       # Start the endpoint when the application starts
       DerivcoAppWeb.Endpoint
       # Starts a worker by calling: DerivcoApp.Worker.start_link(arg)

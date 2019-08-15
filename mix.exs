@@ -36,6 +36,7 @@ defmodule DerivcoApp.MixProject do
       {:ecto_sql, "~> 3.1"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
+      {:distillery, "~> 2.0"},
       {:nimble_csv, "~> 0.3"},
       {:open_api_spex, "~> 3.4"},
       {:phoenix_ecto, "~> 4.0"},
