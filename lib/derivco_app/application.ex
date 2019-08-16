@@ -5,16 +5,24 @@ defmodule DerivcoApp.Application do
 
   use Application
 
+  alias DerivcoApp.Metrics.{DerivcoAppInstrumenter, PrometheusExporter}
+
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
       # DerivcoApp.Repo,
       # Start the endpoint when the application starts
-      DerivcoAppWeb.Endpoint
+      DerivcoAppWeb.Endpoint,
+      # resource endpoint which serves the prometheus server with metrics
+      {Plug.Cowboy, scheme: :http, plug: PrometheusExporter, options: [port: 8081]}
       # Starts a worker by calling: DerivcoApp.Worker.start_link(arg)
       # {DerivcoApp.Worker, arg},
     ]
+
+    # application metrics initialization
+    PrometheusExporter.setup()
+    DerivcoAppInstrumenter.setup()
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

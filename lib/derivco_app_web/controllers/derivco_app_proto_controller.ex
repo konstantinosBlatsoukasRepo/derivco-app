@@ -21,13 +21,13 @@ defmodule DerivcoAppWeb.DerivcoAppProtoController do
   end
 
   defp do_proto_show(conn, results) do
-    t_results = Enum.map(results, &transfor_to_proto_pair(&1))
+    t_results = Enum.map(results, &transform_to_proto_pair(&1))
     proto_response = Response.new(leagueSeasonPairs: t_results)
     response = Protobuf.Serializable.serialize(proto_response)
     send_resp(conn, 200, response)
   end
 
-  defp transfor_to_proto_pair(result) do
+  defp transform_to_proto_pair(result) do
     %{
       "awayTeam" => awayTeam,
       "date" => date,

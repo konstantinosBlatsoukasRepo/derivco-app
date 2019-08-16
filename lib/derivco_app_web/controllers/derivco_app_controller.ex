@@ -1,5 +1,6 @@
 defmodule DerivcoAppWeb.DerivcoAppController do
   use DerivcoAppWeb, :controller
+
   import OpenApiSpex.Operation, only: [response: 3]
 
   alias DerivcoApp.LeagueSeasonPairs
@@ -8,7 +9,6 @@ defmodule DerivcoAppWeb.DerivcoAppController do
 
   plug(OpenApiSpex.Plug.Cast)
   plug(OpenApiSpex.Plug.Validate)
-
 
   def open_api_operation(action) do
     operation = String.to_existing_atom("#{action}_operation")
@@ -68,5 +68,4 @@ defmodule DerivcoAppWeb.DerivcoAppController do
   end
 
   defp do_show(conn, results), do: render(conn, "show.json", results: results)
-
 end

@@ -1,6 +1,9 @@
 FROM bitwalker/alpine-elixir-phoenix:latest
 
+# pheonix server port
 EXPOSE 4000
+# port that serves application metrics to prometheus server
+EXPOSE 8081
 
 ARG APP_NAME=derivco_app
 ARG APP_VSN=0.1.0

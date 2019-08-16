@@ -2,6 +2,7 @@ version: "2.0"
 
 services:
   web:
-    image: "derivco-app:1.10"
+    image: "derivco-app:1.12"
     ports:
       - "4000:4000"
+      - "8081:8081"

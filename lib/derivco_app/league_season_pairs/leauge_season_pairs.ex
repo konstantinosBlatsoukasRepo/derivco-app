@@ -1,4 +1,6 @@
 defmodule DerivcoApp.LeagueSeasonPairs do
+  use PrometheusDecorator
+
   alias NimbleCSV.RFC4180, as: CSV
 
   @external_resource Path.join(__DIR__, "Data.csv")
@@ -13,6 +15,8 @@ defmodule DerivcoApp.LeagueSeasonPairs do
                          %{"leagueId" => league, "seasonId" => season}
                        end)
 
+  @decorate histogram_observe(:derivco_app_all_league_season_pairs_seconds)
+  @decorate counter_inc(:derivco_app_specific_leuague_season_total)
   def get_league_season_pairs(), do: @league_season_pairs
 
   @results_per_league_season_pair @data_contents
@@ -56,6 +60,8 @@ defmodule DerivcoApp.LeagueSeasonPairs do
   for {league_season, results} <- @results_per_league_season_pair do
     {league_id, season_id} = league_season
 
+    @decorate histogram_observe(:derivco_app_all_league_season_pairs_seconds)
+    @decorate counter_inc(:derivco_app_specific_leuague_season_total)
     def get_league_season_results(unquote(league_id), unquote(season_id)),
       do: unquote(Macro.escape(results))
   end

@@ -46,7 +46,10 @@ defmodule DerivcoApp.MixProject do
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix, "~> 1.4.9"},
       {:plug_cowboy, "~> 2.0"},
-      {:postgrex, ">= 0.0.0"}
+      {:postgrex, ">= 0.0.0"},
+      {:prometheus_decorator, github: "StoiximanServices/prometheus_decorator"},
+      {:prometheus_ex, "~> 3.0"},
+      {:prometheus_plugs, "~> 1.1"}
     ]
   end
 
