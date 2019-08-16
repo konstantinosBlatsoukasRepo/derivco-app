@@ -27,12 +27,6 @@ config :derivco_app, DerivcoAppWeb.Endpoint,
   render_errors: [view: DerivcoAppWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: DerivcoApp.PubSub, adapter: Phoenix.PubSub.PG2]
 
-# Configures the endpoint
-# config :derivco_app, DerivcoAppWeb.Endpoint,
-#   url: [host: "localhost"],
-#   secret_key_base: "xVLDagoqKf+oWEwVOj1xvxpfreFHJ/28+dFQhuDbZzrUSd0Dgpda3fMgIVumvrox",
-#   render_errors: [view: DerivcoAppWeb.ErrorView, accepts: ~w(html json)],
-#   pubsub: [name: DerivcoApp.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

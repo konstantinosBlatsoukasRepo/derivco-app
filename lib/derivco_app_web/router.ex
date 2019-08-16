@@ -14,6 +14,10 @@ defmodule DerivcoAppWeb.Router do
     plug(OpenApiSpex.Plug.PutApiSpec, module: DerivcoApp.ApiSpec)
   end
 
+  pipeline :proto_api do
+    plug :accepts, ["json"]
+  end
+
   scope "/" do
     pipe_through(:browser)
     get("/swaggerui", OpenApiSpex.Plug.SwaggerUI, path: "/api/openapi")
@@ -31,5 +35,15 @@ defmodule DerivcoAppWeb.Router do
     )
 
     get("/openapi", OpenApiSpex.Plug.RenderSpec, :show)
+  end
+
+  scope "/api" do
+    pipe_through(:proto_api)
+
+    get(
+      "/proto/leauge-season-pairs/:league_id/:season_id/results",
+      DerivcoAppWeb.DerivcoAppProtoController,
+      :show
+    )
   end
 end

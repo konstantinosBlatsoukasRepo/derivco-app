@@ -9,6 +9,7 @@ defmodule DerivcoAppWeb.DerivcoAppController do
   plug(OpenApiSpex.Plug.Cast)
   plug(OpenApiSpex.Plug.Validate)
 
+
   def open_api_operation(action) do
     operation = String.to_existing_atom("#{action}_operation")
     apply(__MODULE__, operation, [])
@@ -67,4 +68,5 @@ defmodule DerivcoAppWeb.DerivcoAppController do
   end
 
   defp do_show(conn, results), do: render(conn, "show.json", results: results)
+
 end

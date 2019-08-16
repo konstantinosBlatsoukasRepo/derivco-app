@@ -8,4 +8,5 @@ defmodule DerivcoAppWeb.DerivcoAppView do
   def render("show.json", %{results: results}) do
     %{"results" => results}
   end
+
 end

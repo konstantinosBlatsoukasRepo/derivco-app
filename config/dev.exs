@@ -18,6 +18,7 @@ config :derivco_app, DerivcoApp.Repo,
 config :derivco_app, DerivcoAppWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
+  secret_key_base: "u1QXlca4XEZKb1o3HL/aUlznI1qstCNAQ6yme/lFbFIs0Iqiq/annZ+Ty8JyUCDc",
   code_reloader: true,
   check_origin: false,
   watchers: [

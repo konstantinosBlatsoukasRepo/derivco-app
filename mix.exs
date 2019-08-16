@@ -33,10 +33,11 @@ defmodule DerivcoApp.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:distillery, "~> 2.0"},
       {:ecto_sql, "~> 3.1"},
+      {:exprotobuf, "~> 1.2"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:distillery, "~> 2.0"},
       {:nimble_csv, "~> 0.3"},
       {:open_api_spex, "~> 3.4"},
       {:phoenix_ecto, "~> 4.0"},
