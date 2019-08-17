@@ -1,4 +1,14 @@
 defmodule DerivcoApp.LeagueSeasonPairs do
+  @moduledoc """
+  This module is responsible for generating all the data that the app provides in compilation time.
+
+  Two functions are provided
+
+  - get_league_season_pairs/0: lists all the available league/season pairs
+  - get_league_season_results/2: for a specific league/season pair you get a results list
+  for this pair. All the functions are generated in compilation time
+  """
+
   use PrometheusDecorator
 
   alias NimbleCSV.RFC4180, as: CSV
